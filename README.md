@@ -71,5 +71,5 @@ Um sistema simples e responsivo para cadastro e gerenciamento de alunos transpor
 
 ## ✍️ Autor
 
-Desenvolvido por [Seu Nome] 🚀  
-Contato: [seuemail@exemplo.com]
+Desenvolvido por [Lucas Borges] 🚀  
+Contato: [lucassborgess600@gmail.com]
