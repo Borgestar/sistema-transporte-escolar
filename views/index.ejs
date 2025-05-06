@@ -8,13 +8,14 @@
 <body class="container py-4">
   <h1 class="mb-4">Cadastro Transporte Escolar</h1>
   <form action="/cadastro" method="POST">
-    <div class="mb-3"><input class="form-control" name="responsavel" placeholder="Nome do responsável" required></div>
-    <div class="mb-3"><input class="form-control" name="endereco" placeholder="Endereço" required></div>
-    <div class="mb-3"><input class="form-control" name="aluno" placeholder="Nome do aluno" required></div>
-    <div class="mb-3"><input class="form-control" name="escola" placeholder="Escola" required></div>
-    <div class="mb-3"><input class="form-control" name="telefone" placeholder="Telefone" required></div>
-    <div class="mb-3"><input class="form-control" name="mensalidade" placeholder="Valor da mensalidade" required></div>
-    <button class="btn btn-primary">Cadastrar</button>
+    <input type="text" name="responsavel" placeholder="Nome do responsável" required>
+    <input type="text" name="endereco" placeholder="Endereço" required>
+    <input type="text" name="aluno" placeholder="Nome do aluno" required>
+    <input type="text" name="escola" placeholder="Escola" required>
+    <input type="text" name="telefone" placeholder="Telefone" required>
+    <input type="text" name="mensalidade" placeholder="Mensalidade" required>
+    <button type="submit">Cadastrar</button>
   </form>
+  
 </body>
 </html>
