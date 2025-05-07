@@ -1,0 +1,10 @@
+<h1>Editar Cadastro</h1>
+<form action="/editar/<%= cadastro._id %>" method="POST">
+  <input name="responsavel" value="<%= cadastro.responsavel %>" required><br>
+  <input name="endereco" value="<%= cadastro.endereco %>" required><br>
+  <input name="aluno" value="<%= cadastro.aluno %>" required><br>
+  <input name="escola" value="<%= cadastro.escola %>" required><br>
+  <input name="telefone" value="<%= cadastro.telefone %>" required><br>
+  <input name="mensalidade" value="<%= cadastro.mensalidade %>" required><br>
+  <button type="submit">Salvar</button>
+</form>

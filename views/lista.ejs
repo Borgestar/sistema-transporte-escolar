@@ -12,6 +12,13 @@
       <li class="list-group-item d-flex justify-content-between">
         <span><strong><%= c.aluno %></strong> - <%= c.responsavel %></span>
         <a href="/contrato/<%= c._id %>" class="btn btn-sm btn-secondary">Contrato</a>
+        <a href="/editar/<%= c._id %>">Editar</a> |
+        <form action="/excluir/<%= c._id %>" method="POST" style="display:inline;">
+          <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
+        </form>
+        
+      </form>
+
       </li>
     <% }) %>
   </ul>
