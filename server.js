@@ -23,6 +23,31 @@ app.get('/', (req, res) => {
   res.render('index', { sucesso });
 });
 
+app.get('/home', (req, res) => {
+  res.render('home');
+});
+
+app.get('/index', (req, res) => {
+  const sucesso = req.query.sucesso === 'true';
+  res.render('index', { sucesso });
+});
+
+app.post('/cadastro', async (req, res) => {
+  const { responsavel, endereco, aluno, escola, telefone, mensalidade } = req.body;
+
+  if (!responsavel || !endereco || !aluno || !escola || !telefone || !mensalidade) {
+    return res.status(400).send('Todos os campos são obrigatórios!');
+  }
+
+  const telefoneRegex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
+  if (!telefoneRegex.test(telefone)) {
+    return res.status(400).send('Telefone inválido!');
+  }
+
+  const novoCadastro = new Cadastro(req.body);
+  await novoCadastro.save();
+  res.redirect('/index?sucesso=true');
+});
 
 app.post('/cadastro', async (req, res) => {
   const { responsavel, endereco, aluno, escola, telefone, mensalidade } = req.body;
@@ -42,7 +67,9 @@ app.post('/cadastro', async (req, res) => {
   res.redirect('/?sucesso=true');
 });
 
-
+app.get('/buscar-contrato', (req, res) => {
+  res.render('buscar-contrato', { erro: null });
+});
 
 app.get('/lista', async (req, res) => {
   const cadastros = await Cadastro.find();
@@ -72,8 +99,20 @@ app.post('/excluir/:id', async (req, res) => {
   }
 });
 
+app.post('/buscar-contrato', async (req, res) => {
+  const { responsavel } = req.body;
+  const cadastro = await Cadastro.findOne({ responsavel: new RegExp(`^${responsavel}$`, 'i') });
+
+  if (!cadastro) {
+    return res.render('buscar-contrato', { erro: 'Responsável não encontrado.' });
+  }
+
+  res.redirect(`/contrato/${cadastro._id}`);
+});
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando em http://localhost:${PORT}/home`);
 });

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Buscar Contrato</title>
+</head>
+<body>
+    <h1>Visualize seu Contrato.</h1>
+    <form action="/buscar-contrato" method="POST">
+        <label for="responsavel">Nome completo do Responsavel:</label>
+        <input type="text" id="responsavel" name="responsavel" required>
+        <button type="submit">Buscar contrato</button>
+      </form>
+      
+  <% if (erro) { %>
+    <p style="color: red;"><%= erro %></p>
+  <% } %>
+</body>
+</html>
