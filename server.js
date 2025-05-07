@@ -12,11 +12,12 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/transport
 
 const Cadastro = require('./models/Cadastro');
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
-app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
+
 
 app.get('/', (req, res) => {
   const sucesso = req.query.sucesso === 'true';
@@ -67,14 +68,27 @@ app.post('/cadastro', async (req, res) => {
   res.redirect('/?sucesso=true');
 });
 
+const session = require('express-session');
+app.use(session({
+  secret: 'sua_chave_secreta',
+  resave: false,
+  saveUninitialized: true
+}));
+
+
 app.get('/buscar-contrato', (req, res) => {
   res.render('buscar-contrato', { erro: null });
 });
 
 app.get('/lista', async (req, res) => {
+  if (!req.session.logado) {
+    return res.redirect('/login');
+  }
+
   const cadastros = await Cadastro.find();
   res.render('lista', { cadastros });
 });
+
 
 app.get('/contrato/:id', async (req, res) => {
   const cadastro = await Cadastro.findById(req.params.id);
@@ -85,6 +99,21 @@ app.get('/editar/:id', async (req, res) => {
   const cadastro = await Cadastro.findById(req.params.id);
   res.render('editar', { cadastro });
 });
+
+app.get('/login', (req, res) => {
+  res.render('login', { erro: null });
+});
+
+app.post('/login', (req, res) => {
+  const { usuario, senha } = req.body;
+  if (usuario === 'admin' && senha === '1234') {
+    req.session.logado = true;
+    res.redirect('/lista');
+  } else {
+    res.render('login', { erro: 'Usuário ou senha inválidos' });
+  }
+});
+
 app.post('/editar/:id', async (req, res) => {
   await Cadastro.findByIdAndUpdate(req.params.id, req.body);
   res.redirect('/lista');
@@ -110,6 +139,7 @@ app.post('/buscar-contrato', async (req, res) => {
   res.redirect(`/contrato/${cadastro._id}`);
 });
 
+app.set('views', path.join(__dirname, 'views'));
 
 
 const PORT = process.env.PORT || 3000;

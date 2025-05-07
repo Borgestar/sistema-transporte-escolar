@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container fosco">
     <h1>Lista de Cadastros</h1>
     <table>
       <thead>
@@ -26,7 +26,7 @@
             <td><%= c.telefone %></td>
             <td><%= c.escola %></td>
             <td>
-              <div class="acoes">
+              <div class="acoes fosco">
                 <a class="btn" href="/contrato/<%= c._id %>">Contrato</a>
                 <a class="btn" href="/editar/<%= c._id %>">Editar</a>
                 <form action="/excluir/<%= c._id %>" method="POST">

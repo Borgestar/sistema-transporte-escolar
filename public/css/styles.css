@@ -1,21 +1,37 @@
-/* public/css/styles.css */
-
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background-image: url('/images/fundo.jpg'), linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
+  transition: all 0.4s ease-in-out;
 }
 
 .container {
   max-width: 600px;
   margin: 0 auto;
-  background: #fff;
+  background: #ffffffe8;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+
+h2 {
   text-align: center;
   color: #333;
 }
@@ -50,6 +66,7 @@ form button {
 form button:hover {
   background-color: #0056b3;
 }
+
 .mensagem-sucesso {
   background-color: #d4edda;
   color: #155724;
@@ -58,6 +75,7 @@ form button:hover {
   border-radius: 5px;
   margin-bottom: 15px;
 }
+
 /* Estilo para a lista */
 table {
   width: 100%;
@@ -102,9 +120,72 @@ tr:hover {
 .btn:hover {
   opacity: 0.9;
 }
+
 .acoes {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
   align-items: center;
+}
+
+/* estilizando o home */
+.card-custom {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-custom h1 {
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.card-custom a.btn {
+  font-size: 1.1rem;
+  border-radius: 12px;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+}
+
+.card-custom a.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-cadastrar {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-contrato {
+  background-color: #27ae60;
+  color: white;
+}
+
+.btn-admin {
+  background-color: #34495e;
+  color: white;
+}
+
+.btn-cadastrar, .btn-contrato, .btn-admin {
+  padding: 15px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-cadastrar:hover, .btn-contrato:hover, .btn-admin:hover {
+  background-color: #b300456b;
+  transform: scale(1.05);
+}
+
+.fosco {
+  background: rgba(255, 255, 255, 0.2); /* branco translúcido */
+  backdrop-filter: blur(10px);          /* o desfoque */
+  -webkit-backdrop-filter: blur(10px);  /* compatibilidade com Safari */
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* borda sutil */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
