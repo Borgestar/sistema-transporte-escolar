@@ -189,3 +189,95 @@ tr:hover {
   border: 1px solid rgba(255, 255, 255, 0.3); /* borda sutil */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
+
+/* ===== Responsividade ===== */
+
+/* Até 768px (tablets / smartphones grandes) */
+@media (max-width: 768px) {
+  html {
+    font-size: 90%; /* reduz base para ~14px */
+  }
+
+  .container,
+  .card-custom,
+  .contract-container {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  form input[type="text"],
+  form input[type="tel"],
+  form select {
+    padding: 8px;
+  }
+
+  form button {
+    padding: 10px;
+  }
+
+  table th, table td {
+    padding: 8px 12px;
+  }
+
+  .acoes {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* Até 480px (smartphones menores) */
+@media (max-width: 480px) {
+  html {
+    font-size: 85%; /* reduz para ~13px */
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  .container,
+  .card-custom,
+  .contract-container {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .fosco {
+    backdrop-filter: blur(8px);
+  }
+
+  .contract-header {
+    display: block;
+    text-align: center;
+  }
+
+  .contract-date {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .contract-details dl dt,
+  .contract-details dl dd {
+    display: block;
+    margin: 0.4rem 0;
+  }
+
+  .signature-block {
+    width: 100%;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+}
