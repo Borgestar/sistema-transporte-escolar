@@ -111,7 +111,7 @@ app.get('/lista', checkAuth, async (req, res) => {
   res.render('lista', { cadastros });
 });
 
-app.get('/contrato/:id', checkAuth, async (req, res) => {
+app.get('/contrato/:id', async (req, res) => {
   const cadastro = await Cadastro.findById(req.params.id);
   res.render('contrato', { cadastro });
 });
