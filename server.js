@@ -19,15 +19,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('index', { sucesso: req.query.sucesso });
+  const sucesso = req.query.sucesso === 'true';
+  res.render('index', { sucesso });
 });
 
 
 app.post('/cadastro', async (req, res) => {
+  const { responsavel, endereco, aluno, escola, telefone, mensalidade } = req.body;
+
+  // Verificação simples
+  if (!responsavel || !endereco || !aluno || !escola || !telefone || !mensalidade) {
+    return res.status(400).send('Todos os campos são obrigatórios!');
+  }
+
+  const telefoneRegex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
+  if (!telefoneRegex.test(telefone)) {
+    return res.status(400).send('Telefone inválido!');
+  }
+
   const novoCadastro = new Cadastro(req.body);
   await novoCadastro.save();
-  res.redirect('/?sucesso=1');
+  res.redirect('/?sucesso=true');
 });
+
 
 
 app.get('/lista', async (req, res) => {

@@ -3,24 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <title>Lista de Cadastros</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body class="container py-4">
-  <h1 class="mb-4">Cadastros</h1>
-  <ul class="list-group">
-    <% cadastros.forEach(c => { %>
-      <li class="list-group-item d-flex justify-content-between">
-        <span><strong><%= c.aluno %></strong> - <%= c.responsavel %></span>
-        <a href="/contrato/<%= c._id %>" class="btn btn-sm btn-secondary">Contrato</a>
-        <a href="/editar/<%= c._id %>">Editar</a> |
-        <form action="/excluir/<%= c._id %>" method="POST" style="display:inline;">
-          <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
-        </form>
-        
-      </form>
-
-      </li>
-    <% }) %>
-  </ul>
+<body>
+  <div class="container">
+    <h1>Lista de Cadastros</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Aluno</th>
+          <th>Responsável</th>
+          <th>Telefone</th>
+          <th>Escola</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% cadastros.forEach(c => { %>
+          <tr>
+            <td><%= c.aluno %></td>
+            <td><%= c.responsavel %></td>
+            <td><%= c.telefone %></td>
+            <td><%= c.escola %></td>
+            <td>
+              <div class="acoes">
+                <a class="btn" href="/contrato/<%= c._id %>">Contrato</a>
+                <a class="btn" href="/editar/<%= c._id %>">Editar</a>
+                <form action="/excluir/<%= c._id %>" method="POST">
+                  <button class="btn excluir" type="submit" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
+                </form>
+              </div>
+            </td>
+            
+            
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>

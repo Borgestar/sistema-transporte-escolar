@@ -8,12 +8,10 @@
 <body>
   <div class="container">
     <h1>Cadastro</h1>
-    <% if (sucesso === '1') { %>
+    <% if (sucesso) { %>
       <p class="mensagem-sucesso">Cadastro realizado com sucesso!</p>
     <% } %>
-    
-    
-    
+      
     <form action="/cadastro" method="POST">
       <label for="responsavel">Responsável:</label>
       <input type="text" name="responsavel" required>
@@ -36,5 +34,17 @@
       <button type="submit">Cadastrar</button>
     </form>
   </div>
+  <script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+      const telefone = document.querySelector('input[name="telefone"]').value;
+      const telefoneRegex = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
+  
+      if (!telefoneRegex.test(telefone)) {
+        alert('Digite um número de telefone válido (ex: 21 91234-5678)');
+        e.preventDefault(); // Impede envio
+      }
+    });
+  </script>
+  
 </body>
 </html>
