@@ -52,17 +52,26 @@ Um sistema simples e responsivo para cadastro e gerenciamento de alunos transpor
     ```
 
 ## 📁 Estrutura
-.
+
 ├── server.js
+
 ├── models/
+
 │ └── Cadastro.js
+
 ├── views/
 │ ├── index.ejs
+
 │ ├── lista.ejs
+
 │ └── contrato.ejs
+
 ├── public/
+
 │ └── css/
+
 ├── .env
+
 └── README.md
 
 
