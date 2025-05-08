@@ -65,9 +65,6 @@ Um sistema simples e responsivo para cadastro e gerenciamento de alunos transpor
 ├── .env
 └── README.md
 
-nginx
-Copiar
-Editar
 
 ## ✍️ Autor
 Desenvolvido por Lucas Borges 🚀  
