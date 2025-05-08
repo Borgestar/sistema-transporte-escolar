@@ -32,6 +32,7 @@ app.use((req, res, next) => {
   next();
 });
 
+
 // Configuração do EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
